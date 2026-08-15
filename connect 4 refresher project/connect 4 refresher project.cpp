@@ -38,7 +38,7 @@ void print_board(const Color (&board)[ROWS][COLS]) {
     std::cout << '\n';
 }
 
-bool verify_input(const unsigned int& input, const Color(&board)[ROWS][COLS]) {
+bool verify_input(const unsigned int& input, const Color (&board)[ROWS][COLS]) {
     if (input < 1 || input > COLS) {
         std::cout << "Value out of bounds. Try again.\n";
         return false;
@@ -52,7 +52,7 @@ bool verify_input(const unsigned int& input, const Color(&board)[ROWS][COLS]) {
     return true;
 }
 
-unsigned int get_input(const Color& curr_player, const Color(&board)[ROWS][COLS]) {
+unsigned int get_input(const Color& curr_player, const Color (&board)[ROWS][COLS]) {
     std::cout << "CURRENT PLAYER: ";
     switch (curr_player) {
     case Color::Red:
@@ -90,7 +90,7 @@ void switch_player(Color& player) {
     player = (player == Color::Red) ? Color::Yellow : Color::Red;
 }
 
-bool has_won(const Color& player, Color(&board)[ROWS][COLS], const unsigned int& last_move_row, const unsigned int& last_move_col) {
+bool has_won(const Color& player, Color (&board)[ROWS][COLS], const unsigned int& last_move_row, const unsigned int& last_move_col) {
     const int directions[4][2] = {
         {0, 1},   // horizontal right
         {1, 0},   // vertical down
@@ -181,13 +181,13 @@ int main()
                 std::cout << ANSI_YELLOW << "YELLOW";
                 break;
             }
-            std::cout << ANSI_RESET << " WON!\nPress any key to exit.";
+            std::cout << ANSI_RESET << " WON!\nPress any key to exit.\n";
             wait_until_key_pressed();
             return 0;
         }
     }
 
-    std::cout << "NOONE WON!\nPress any key to exit.";
+    std::cout << "NOONE WON!\nPress any key to exit.\n";
     wait_until_key_pressed();
     return 1;
 }
